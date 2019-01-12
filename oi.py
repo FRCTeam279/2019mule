@@ -3,7 +3,8 @@ from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
 
 import robotmap
-#from commands.navxresetyawangle import NavxResetYawAngle
+from commands.navxresetyawangle import NavxResetYawAngle
+
 
 class T16000M(Joystick):
     def __init__(self, port):
@@ -34,8 +35,8 @@ config.throttleFilterPower = 0.4
 config.turnFilterPower = 0.4
 
 # Left Joystickc
-#config.btnDriveSlow = 1
-#config.btnResetEncodersIndex = 2
+config.btnDriveSlow = 1
+config.btnResetEncodersIndex = 2
 
 # Right Joystick
 config.btnResetYawAngleIndex = 2
@@ -47,7 +48,10 @@ config.btnResetYawAngleIndex = 2
 
 leftDriverStick = None
 rightDriverStick = None
-#resetYawBtn = None
+goGamePad = None
+resetYawBtn = None
+btnResetEncoders = None
+btnDriveSlow = None
 
 
 # ----------------------------------------------------------
@@ -78,10 +82,114 @@ def init():
     # ----------------------------------------------------------
     # Driver Controls
     # ----------------------------------------------------------
-    #global resetYawBtn
-    #resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
-    #resetYawBtn.whenPressed(NavxResetYawAngle())
+    global resetYawBtn
+    resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
+    resetYawBtn.whenPressed(NavxResetYawAngle())
+
+    global btnDriveSlow
+    btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
+
+    #global btnResetEncoders
+    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
 
 
 
+
+
+# ----------------------------------------------------------
+# Utility Functions
+# ----------------------------------------------------------
+
+# https://www.desmos.com/calculator/yopfm4gkno
+# power should be > 0.1 and less than 4 or 5 ish on the outside
+#    If power is < 1.0, the curve is a logrithmic curve to give more power closer to center
+#    Powers greater than one give a more traditional curve with less sensitivity near center
+def filterInputToPower(val, deadZone=0.0, power=2):
+    power = math.fabs(power)
+    if power < 0.1:
+        power = 0.1
+    if power > 5:
+        power = 5
+
+    sign = 1.0
+    if val < 0.0:
+        sign = -1.0
+
+    val = math.fabs(val)
+    deadZone = math.fabs(deadZone)
+
+    if val < deadZone:
+        val = 0.0
+    else:
+        val = val * ((val - deadZone) / (1 - deadZone))
+
+    output = val ** power
+    return output * sign
+
+
+# View output: https://www.desmos.com/calculator/uh8th7djep
+# to keep a straight line, scale = 0, and filterFactor = 1
+# Keep filterFactor between 0 and 1
+# Scale can go from 0 up, but values over 3-4 have dubious value
+# Nice curve for game pad is filterFactor = 0.2, scale=1.5
+def filterInput(val, deadZone=0.0, filterFactor=1.0, scale=0.0):
+    """
+    Filter an input using a curve that makes the stick less sensitive at low input values
+    Take into account any dead zone required for values very close to 0.0
+    """
+
+    sign = 1.0
+    if val < 0.0:
+        sign = -1.0
+
+    val = math.fabs(val)
+    deadZone = math.fabs(deadZone)
+
+    if val < deadZone:
+        val = 0.0
+    else:
+        val = val * ((val - deadZone) / (1 - deadZone))
+
+    output = val * ((filterFactor * (val**scale)) + ((1 - filterFactor) * val))
+    output *= sign
+    return output
+
+
+def applyDeadZone(val, deadZone):
+    """
+    Apply a dead zone to an input with no other smoothing. Values outsize the dead zone are correctly scaled for 0 to 1.0
+    :return:
+    The float value of the adjusted intput
+    """
+    sign = 1.0
+    if val < 0.0:
+        sign = -1.0
+
+    val = math.fabs(val)
+    deadZone = math.fabs(deadZone)
+
+    if val < deadZone:
+        val = 0.0
+    else:
+        val = val * ((val - deadZone) / (1 - deadZone))
+
+    val *= sign
+    return val
+
+
+def getRawThrottle():
+    """
+    Use the Y Axis of the left stick for throttle.  Value is reversed so that 1.0 is forward (up on a joystick is usually negative input)
+    :return:
+    The float value of the throttle between -1.0 and 1.0
+    """
+    val = leftDriverStick.getY()
+    if val != 0.0:
+        val *= -1.0
+    return val
+
+
+def getRawTurn():
+    return rightDriverStick.getX()
 
