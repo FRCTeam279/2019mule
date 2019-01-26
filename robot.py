@@ -3,7 +3,6 @@ from commandbased import CommandBasedRobot
 from wpilib.command import Scheduler
 from wpilib import SmartDashboard
 from wpilib.driverstation import DriverStation
-from robotpy_ext.common_drivers import navx
 
 # import items in the order they should be initialized to avoid any surprises
 import robotmap
@@ -23,14 +22,14 @@ class MyRobot(CommandBasedRobot):
         subsystems.init()
         oi.init()
 
-        if robotmap.sensors.hasAHRS:
-            try:
-                robotmap.sensors.ahrs = navx.AHRS.create_spi()
-                # use via robotmap.sensors.ahrs.getAngle() or getYaw()
-                print('robotInit: NavX Setup')
-            except:
-                if not DriverStation.getInstance().isFmsAttached():
-                    raise
+        #if robotmap.sensors.hasAHRS:
+        #    try:
+        #        robotmap.sensors.ahrs = navx.AHRS.create_spi()
+        #        # use via robotmap.sensors.ahrs.getAngle() or getYaw()
+        #        print('robotInit: NavX Setup')
+        #    except:
+        #        if not DriverStation.getInstance().isFmsAttached():
+        #            raise
 
 
     def autonomousInit(self):
