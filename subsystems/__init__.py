@@ -6,7 +6,7 @@ for it in the global scope.
 
 from wpilib.robotbase import RobotBase
 
-from subsystems.mecdrive import MecDrive
+from subsystems.tankdrive import TankDrive
 
 driveline = None
 
@@ -26,6 +26,6 @@ def init():
     if (driveline) is not None and not RobotBase.isSimulation():
         raise RuntimeError('Subsystems have already been initialized')
 
-    driveline = MecDrive()
+    driveline = TankDrive()
     
 

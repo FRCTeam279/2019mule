@@ -3,7 +3,6 @@ from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
 
 import robotmap
-from commands.navxresetyawangle import NavxResetYawAngle
 
 
 class T16000M(Joystick):
@@ -82,9 +81,9 @@ def init():
     # ----------------------------------------------------------
     # Driver Controls
     # ----------------------------------------------------------
-    global resetYawBtn
-    resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
-    resetYawBtn.whenPressed(NavxResetYawAngle())
+    #global resetYawBtn
+    #resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
+    #resetYawBtn.whenPressed(NavxResetYawAngle())
 
     global btnDriveSlow
     btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
@@ -154,6 +153,7 @@ def filterInput(val, deadZone=0.0, filterFactor=1.0, scale=0.0):
     output = val * ((filterFactor * (val**scale)) + ((1 - filterFactor) * val))
     output *= sign
     return output
+    #try using tanh with import numpy for a different scaling.
 
 
 def applyDeadZone(val, deadZone):
