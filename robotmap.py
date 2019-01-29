@@ -19,8 +19,12 @@ devMode = False
 driveLine = ConfigHolder()
 driveLine.leftMotorPort = 0
 driveLine.rightMotorPort = 1
+<<<<<<< HEAD
 driveLine.pdpCANid = 0          #pdp on CAN ID 0
 driveLine.pcmCANid = 1          #pcm on CAN ID 1
+=======
+
+>>>>>>> ab50d658db9f6f6212742aae4dce6f5a00c194e2
 
 # the new MecanumDrive library from WPILIP inverts the right motors by default, so inversion is often not needed.
 # Be sure to view the wheel direction when moving side to side and forward/backward on mounts before testing on ground to verify

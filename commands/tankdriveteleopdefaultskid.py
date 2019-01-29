@@ -20,7 +20,11 @@ class TankDriveTeleopDefaultSkid(Command):
 
 
     def execute(self):
+<<<<<<< HEAD
         subsystems.driveline.driveRaw(oi.leftDriverStick.getY()*-1.0, oi.rightDriverStick.getY()*-1.0)  # to work correctly: left*1.0, right*-1.0
+=======
+        subsystems.driveline.driveRaw(oi.leftDriverStick.getY()*-1.0, oi.rightDriverStick.getY()*-1.0)
+>>>>>>> ab50d658db9f6f6212742aae4dce6f5a00c194e2
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
