@@ -43,6 +43,12 @@ sensors = ConfigHolder()
 sensors.hasAHRS = True
 
 
+# ----------------------------------------------------------
+# CAN Adress ID Config
+# ----------------------------------------------------------
+canId = ConfigHolder
+canId.Pcm = 1
+canId.Pdb = 0
 
 
 print("RobotMap module completed load")
