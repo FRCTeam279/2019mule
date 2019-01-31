@@ -1,9 +1,8 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-
+from commands.tankdrivelift import TankDriveLift
 import robotmap
-from commands.navxresetyawangle import NavxResetYawAngle
 
 
 class T16000M(Joystick):
@@ -40,7 +39,7 @@ config.btnResetEncodersIndex = 2
 
 # Right Joystick
 config.btnResetYawAngleIndex = 2
-
+config.btnRaiseAllIndex = 1
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -52,7 +51,7 @@ goGamePad = None
 resetYawBtn = None
 btnResetEncoders = None
 btnDriveSlow = None
-
+btnLift = None             # added to eject/retract cylinder(s)
 
 # ----------------------------------------------------------
 # Init
@@ -82,12 +81,16 @@ def init():
     # ----------------------------------------------------------
     # Driver Controls
     # ----------------------------------------------------------
-    global resetYawBtn
-    resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
-    resetYawBtn.whenPressed(NavxResetYawAngle())
+    #global resetYawBtn
+    #resetYawBtn = JoystickButton(rightDriverStick, config.btnResetYawAngleIndex)
+    #resetYawBtn.whenPressed(NavxResetYawAngle())
 
     global btnDriveSlow
     btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
+
+    global btnLift
+    btnLift = JoystickButton(rightDriverStick, config.btnRaiseAllIndex)
+    btnLift.whenPressed(TankDriveLift())
 
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
