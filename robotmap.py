@@ -26,7 +26,7 @@ driveLine.pcmCANid = 1          #pcm on CAN ID 1
 # Be sure to view the wheel direction when moving side to side and forward/backward on mounts before testing on ground to verify
 # and remember that the rollers on the wheels should form an X when looked at from the top/bottom
 #  (ie right rear and left front wheels rolers are aligned in same direction, etc..)
-driveLine.invertLeft = False
+driveLine.invertLeft = True
 driveLine.invertRight = False
 #driveLine.invertRightRear = False
 
@@ -38,8 +38,6 @@ lift.raiseBtnAll = 1
 # ----------------------------------------------------------
 sensors = ConfigHolder()
 sensors.hasAHRS = True
-
-
 
 
 print("RobotMap module completed load")

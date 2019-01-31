@@ -157,6 +157,7 @@ def filterInput(val, deadZone=0.0, filterFactor=1.0, scale=0.0):
     output = val * ((filterFactor * (val**scale)) + ((1 - filterFactor) * val))
     output *= sign
     return output
+    #try using tanh with import numpy for a different scaling.
 
 
 def applyDeadZone(val, deadZone):

@@ -1,5 +1,6 @@
 import math
 
+from wpilib.BaseSolenoid import BaseSolenoid #Or from wpilib.BaseSolenoid import DoubleSolenoid???
 from wpilib.command import Command
 import robotmap
 import subsystems
