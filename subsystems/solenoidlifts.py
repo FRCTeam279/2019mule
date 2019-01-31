@@ -22,11 +22,15 @@ class Solenoids(Subsystem):
         super().__init__('Solenoids')
         self.logPrefix = "Solenoids: "   # not sure what this does
 
-        self.pcm =
+    def triggerSolenoids()
 
-        self.frontSol =
+        self.pcm
+    
 
-        self.backSol =
+        self.frontSol
+
+
+        self.backSol
 
 
     def initDefaultCommand(self):

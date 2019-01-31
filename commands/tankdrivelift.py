@@ -1,20 +1,19 @@
 import math
 
-from wpilib.BaseSolenoid import BaseSolenoid #Or from wpilib.BaseSolenoid import DoubleSolenoid???
+from wpilib.BaseSolenoid import DoubleSolenoid
 from wpilib.command import Command
 import robotmap
 import subsystems
 import oi
 
-class Liftfront(): #need to change this
+class TankDriveLift():
 
     def __init__(self):
-            super().__init__('can.BusABC')
+            super().__init__('TankDriveLift')
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        #insert can stuff 
 
 
     def isFinished(self):
