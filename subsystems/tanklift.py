@@ -15,12 +15,12 @@ class TankLift(Subsystem):
         super().__init__('TankLift')
         self.logPrefix = "TankLift: "
 
-        self.frontCylinder = wpilib.DoubleSolenoid(1,2) # takes ports on pcm to energize solenoid
-        self.rearCylinder =  wpilib.DoubleSolenoid(3,4)
+        self.frontCylinder = wpilib.DoubleSolenoid(1,0,1) # 1st arg= CAN ID=1, then takes ports on pcm to energize solenoid
+        self.rearCylinder =  wpilib.DoubleSolenoid(1,2,3) # 1st arg= CAN ID=1, ...
     # ------------------------------------------------------------------------------------------------------------------
 
  
-    def driveLift(self):       # reads the lift trigger from the right joystick
+    def tankLift(self):       # reads the lift trigger from the right joystick
         '''
         if liftTrig:
             on_off = 1.0
@@ -30,3 +30,14 @@ class TankLift(Subsystem):
         self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off
         self.rearCylinder.set(1)
    
+    def retractAll(self):       # reads the lift trigger from the right joystick
+        '''
+        if liftTrig:
+            on_off = 1.0
+        else:
+            on_off = 0.0
+            '''
+        self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
+        self.rearCylinder.set(2)
+   
+    # more functions for sophisticated functionality

@@ -5,15 +5,15 @@ import robotmap
 import subsystems
 import oi
 
-class TankDriveLift(Command):
+class RetractAll(Command):
 
     def __init__(self):
-            super().__init__('TankDriveLift')
+            super().__init__('RetractAll')
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.drivelift.tankLift()
+        subsystems.drivelift.retractAll()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
