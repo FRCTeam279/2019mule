@@ -8,7 +8,8 @@ import oi
 class ExtendFront(Command):
 
     def __init__(self):
-            super().__init__('ExtendAll')
+            super().__init__('ExtendFront')
+            self.requires(subsystems.drivelift)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 

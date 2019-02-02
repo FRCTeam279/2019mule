@@ -8,7 +8,8 @@ import oi
 class ExtendBack(Command):
 
     def __init__(self):
-            super().__init__('ExtendAll')
+            super().__init__('ExtendBack')
+            self.requires(subsystems.drivelift)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 

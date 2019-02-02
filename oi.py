@@ -5,6 +5,7 @@ from commands.extendall import ExtendAll
 from commands.retractall import RetractAll
 from commands.extendfront import ExtendFront
 from commands.extendback import ExtendBack
+from commands.retractfront import RetractFront
 import robotmap
 
 
@@ -41,12 +42,13 @@ config.btnDriveSlow = 1
 config.btnResetEncodersIndex = 2
 
 # Right Joystick
-config.btnResetYawAngleIndex = 2
+config.btnResetYawAngleIndex = 7 #temporarily changed from 2 to 7
 config.btnExtendAllIndex = 1
-config.btnRetractAllIndex = 3
-config.btnExtendFrontIndex = 4
-config.btnExtendBackIndex = 5
-
+config.btnRetractAllIndex = 2
+config.btnExtendFrontIndex = 3
+config.btnExtendBackIndex = 4
+config.btnRetractFrontIndex = 5
+config.btnRetractBackIndex = 6
 # ----------------------------------------------------------
 # Stick and Button Objects
 # ----------------------------------------------------------
@@ -109,6 +111,10 @@ def init():
     global btnExtendBack
     btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
     btnExtendBack.whenPressed(ExtendBack())
+
+    global btnRetractFront
+    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
+    btnRetractFront.whenPressed(RetractFront())
 
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)

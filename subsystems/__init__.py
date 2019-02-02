@@ -10,7 +10,7 @@ from subsystems.tankdrive import TankDrive
 from subsystems.tanklift import TankLift
 
 driveline = None
-drivelift= None
+drivelift = None
 
 def init():
     print('Subsystems init called')
