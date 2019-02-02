@@ -3,6 +3,8 @@ from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
 from commands.extendall import ExtendAll
 from commands.retractall import RetractAll
+from commands.extendfront import ExtendFront
+from commands.extendback import ExtendBack
 import robotmap
 
 
@@ -40,8 +42,11 @@ config.btnResetEncodersIndex = 2
 
 # Right Joystick
 config.btnResetYawAngleIndex = 2
-config.btnRaiseAllIndex = 1
+config.btnExtendAllIndex = 1
 config.btnRetractAllIndex = 3
+config.btnExtendFrontIndex = 4
+config.btnExtendBackIndex = 5
+
 # ----------------------------------------------------------
 # Stick and Button Objects
 # ----------------------------------------------------------
@@ -89,13 +94,21 @@ def init():
     global btnDriveSlow
     btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
 
-    global btnLift
-    btnLift = JoystickButton(rightDriverStick, config.btnRaiseAllIndex)
-    btnLift.whenPressed(ExtendAll())
+    global btnExtendAll
+    btnExtendAll = JoystickButton(rightDriverStick, config.btnExtendAllIndex)
+    btnExtendAll.whenPressed(ExtendAll())
 
     global btnRetract
     btnRetract = JoystickButton(rightDriverStick, config.btnRetractAllIndex)
     btnRetract.whenPressed(RetractAll())
+
+    global btnExtendFront
+    btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
+    btnExtendFront.whenPressed(ExtendFront())
+
+    global btnExtendBack
+    btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
+    btnExtendBack.whenPressed(ExtendBack())
 
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
