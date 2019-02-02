@@ -5,7 +5,7 @@ import robotmap
 import subsystems
 import oi
 
-class ExtendAll(Command):
+class ExtendBack(Command):
 
     def __init__(self):
             super().__init__('ExtendAll')
