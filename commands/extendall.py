@@ -1,9 +1,5 @@
 import math
 
-<<<<<<< HEAD:commands/tankdrivelift.py
-from wpilib.BaseSolenoid import DoubleSolenoid
-=======
->>>>>>> 69c029165153d86cc5eb6ffd94424e3ab1de0f61:commands/extendall.py
 from wpilib.command import Command
 import robotmap
 import subsystems

@@ -8,7 +8,7 @@ import oi
 class ExtendBack(Command):
 
     def __init__(self):
-            super().__init__('ExtendAll')
+            super().__init__('ExtendBack')
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
