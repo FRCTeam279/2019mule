@@ -5,15 +5,15 @@ import robotmap
 import subsystems
 import oi
 
-class TankDriveLift(Command):
+class ExtendAll(Command):
 
     def __init__(self):
-            super().__init__('TankDriveLift')
+            super().__init__('ExtendAll')
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.drivelift.tankLift()
+        subsystems.drivelift.extendAll()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

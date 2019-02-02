@@ -1,7 +1,7 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-from commands.tankdrivelift import TankDriveLift
+from commands.extendall import ExtendAll
 from commands.retractall import RetractAll
 import robotmap
 
@@ -91,7 +91,7 @@ def init():
 
     global btnLift
     btnLift = JoystickButton(rightDriverStick, config.btnRaiseAllIndex)
-    btnLift.whenPressed(TankDriveLift())
+    btnLift.whenPressed(ExtendAll())
 
     global btnRetract
     btnRetract = JoystickButton(rightDriverStick, config.btnRetractAllIndex)

@@ -20,24 +20,21 @@ class TankLift(Subsystem):
     # ------------------------------------------------------------------------------------------------------------------
 
  
-    def tankLift(self):       # reads the lift trigger from the right joystick
-        '''
-        if liftTrig:
-            on_off = 1.0
-        else:
-            on_off = 0.0
-            '''
+    def extendAll(self):       # reads the lift trigger from the right joystick
         self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off
         self.rearCylinder.set(1)
    
     def retractAll(self):       # reads the lift trigger from the right joystick
-        '''
-        if liftTrig:
-            on_off = 1.0
-        else:
-            on_off = 0.0
-            '''
         self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
         self.rearCylinder.set(2)
+
+    def extendFront(self):       # reads the lift trigger from the right joystick
+        self.frontCylinder.set(1)   # 1: extend, 2: retract, 0: off
+        self.rearCylinder.set(2)
+
+    def extendBack(self):       # reads the lift trigger from the right joystick
+        self.frontCylinder.set(2)   # 1: extend, 2: retract, 0: off
+        self.rearCylinder.set(1)
+        #this may not be needed in the actual sequence of final robot since the front will always be extended when the back extends
    
     # more functions for sophisticated functionality
