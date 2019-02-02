@@ -20,7 +20,6 @@ class TankDriveTeleopDefaultSkid(Command):
 
 
     def execute(self):
-        subsystems.driveline.driveRaw(oi.leftDriverStick.getY()*-1.0, oi.rightDriverStick.getY()*-1.0)  # to work correctly: left*1.0, right*-1.0
         subsystems.driveline.driveRaw(oi.leftDriverStick.getY()*-1.0, oi.rightDriverStick.getY()*-1.0)
 
     def isFinished(self):

@@ -1,7 +1,7 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-
+from commands.tankdrivelift import TankDriveLift
 import robotmap
 
 
@@ -39,7 +39,7 @@ config.btnResetEncodersIndex = 2
 
 # Right Joystick
 config.btnResetYawAngleIndex = 2
-
+config.btnRaiseAllIndex = 1
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -51,7 +51,7 @@ goGamePad = None
 resetYawBtn = None
 btnResetEncoders = None
 btnDriveSlow = None
-
+btnLift = None             # added to eject/retract cylinder(s)
 
 # ----------------------------------------------------------
 # Init
@@ -87,6 +87,10 @@ def init():
 
     global btnDriveSlow
     btnDriveSlow = JoystickButton(leftDriverStick, config.btnDriveSlow)
+
+    global btnLift
+    btnLift = JoystickButton(rightDriverStick, config.btnRaiseAllIndex)
+    btnLift.whenPressed(TankDriveLift())
 
     #global btnResetEncoders
     #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)

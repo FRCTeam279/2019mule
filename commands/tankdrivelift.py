@@ -6,7 +6,7 @@ import robotmap
 import subsystems
 import oi
 
-class TankDriveLift():
+class TankDriveLift(Command):
 
     def __init__(self):
             super().__init__('TankDriveLift')
@@ -14,8 +14,8 @@ class TankDriveLift():
             self.setRunWhenDisabled(False)
 
     def execute(self):
-
+        subsystems.drivelift.driveLift()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
-        return False
+        return True

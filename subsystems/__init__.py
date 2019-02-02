@@ -7,8 +7,10 @@ for it in the global scope.
 from wpilib.robotbase import RobotBase
 
 from subsystems.tankdrive import TankDrive
+from subsystems.tanklift import TankLift
 
 driveline = None
+drivelift= None
 
 def init():
     print('Subsystems init called')
@@ -17,7 +19,7 @@ def init():
     instantiated. Do not run it more than once.
     '''
     global driveline
-    
+    global drivelift
 
     '''
     Some tests call startCompetition multiple times, so don't throw an error if
@@ -27,5 +29,5 @@ def init():
         raise RuntimeError('Subsystems have already been initialized')
 
     driveline = TankDrive()
-    
+    drivelift = TankLift()
 

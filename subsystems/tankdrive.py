@@ -24,10 +24,6 @@ class TankDrive(Subsystem):
         self.rightSpdCtrl = wpilib.Talon(robotmap.driveLine.rightMotorPort)
         if robotmap.driveLine.invertRight:
             self.rightSpdCtrl.setInverted(True)
-        
-        self.frontCylinder = wpilib.SolenoidBase(robotmap.driveline.pcmCANid)
-
-        self.rearCylinder =  wiplib.SolenoidBase(robotmap.drivelin.pdpCANid)
     # ------------------------------------------------------------------------------------------------------------------
     def initDefaultCommand(self):
             self.setDefaultCommand(TankDriveTeleopDefaultSkid())
@@ -36,7 +32,6 @@ class TankDrive(Subsystem):
     def driveRaw(self, left, right):
         self.leftSpdCtrl.set(left)
         self.rightSpdCtrl.set(right)
-
     
     def stop(self):
         self.leftSpdCtrl.set(0.0)
