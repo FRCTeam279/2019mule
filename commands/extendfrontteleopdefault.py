@@ -5,19 +5,15 @@ import robotmap
 import subsystems
 import oi
 
-class ExtendBack(Command):
+class ExtendFront(Command):
 
     def __init__(self):
-            super().__init__('ExtendBack')
-<<<<<<< HEAD
-            self.requires(subsystems.drivelift)
-=======
->>>>>>> 8e9b3ec75a43d79df9d76be99f51627ba447f1fb
+            super().__init__('ExtendFront')
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.drivelift.extendBack()
+        subsystems.drivelift.extendFront()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
