@@ -9,6 +9,7 @@ class ExtendAll(Command):
 
     def __init__(self):
             super().__init__('ExtendAll')
+            self.requires(subsystems.drivelift)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 

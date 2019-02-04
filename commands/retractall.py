@@ -9,6 +9,7 @@ class RetractAll(Command):
 
     def __init__(self):
             super().__init__('RetractAll')
+            self.requires(subsystems.drivelift)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 

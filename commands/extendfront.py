@@ -9,6 +9,10 @@ class ExtendFront(Command):
 
     def __init__(self):
             super().__init__('ExtendFront')
+<<<<<<< HEAD
+            self.requires(subsystems.drivelift)
+=======
+>>>>>>> 8e9b3ec75a43d79df9d76be99f51627ba447f1fb
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 

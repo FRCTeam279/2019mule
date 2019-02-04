@@ -5,20 +5,17 @@ import robotmap
 import subsystems
 import oi
 
-class ExtendBack(Command):
+class TankLiftTeleopDefault(Command):
 
     def __init__(self):
-            super().__init__('ExtendBack')
-<<<<<<< HEAD
+            super().__init__('TankLiftTeleopDefault')
             self.requires(subsystems.drivelift)
-=======
->>>>>>> 8e9b3ec75a43d79df9d76be99f51627ba447f1fb
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.drivelift.extendBack()
+        subsystems.drivelift.retractFront()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
-        return True
+        return False
