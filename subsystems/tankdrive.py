@@ -8,6 +8,7 @@ import wpilib.drive
 import subsystems
 import robotmap
 from commands.tankdriveteleopdefaultskid import TankDriveTeleopDefaultSkid as TankDriveTeleopDefaultSkid
+#from commands.tankdriveteleopdefaultnfs import TankDriveTeleopDefaultNFS as TankDriveTeleopDefaultNFS
 
 class TankDrive(Subsystem):
 
@@ -24,9 +25,11 @@ class TankDrive(Subsystem):
         self.rightSpdCtrl = wpilib.Talon(robotmap.driveLine.rightMotorPort)
         if robotmap.driveLine.invertRight:
             self.rightSpdCtrl.setInverted(True)
+
     # ------------------------------------------------------------------------------------------------------------------
+    
     def initDefaultCommand(self):
-            self.setDefaultCommand(TankDriveTeleopDefaultSkid())
+            self.setDefaultCommand(TankDriveTeleopDefaultSkid()) #skid
             print("{}Default command set to DriveTeleopDefaultSkid".format(self.logPrefix))
 
     def driveRaw(self, left, right):
