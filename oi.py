@@ -88,13 +88,6 @@ def init():
     global rightDriverStick
     global goGamePad
 
-"""
-    try:
-        gamepadController = GamepadF310(2)
-    except:
-        print('OI: Error - Could not instantiate Left Driver Stick on USB port 0!!!')
-"""
-
     try:
         leftDriverStick = T16000M(0)
     except:

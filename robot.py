@@ -59,7 +59,6 @@ class MyRobot(CommandBasedRobot):
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
         # optionally do stuff like display data to smart dashboard here while in disabled
 
-
         SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
         # optionally do stuff like display data to smart dashboard here while in disabled
