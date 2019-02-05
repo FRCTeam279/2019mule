@@ -49,6 +49,12 @@ config.btnExtendFrontIndex = 3
 config.btnExtendBackIndex = 4
 config.btnRetractFrontIndex = 5
 config.btnRetractBackIndex = 6
+
+# GO Gamepad (Logitech)
+config.btnRampTogIndex = 4         # 4 = Y
+config.btnHatchGrabTogIndex = 1      # 1 = A
+config.btnCargoGrabTogIndex = 3    # 3 = X
+
 # ----------------------------------------------------------
 # Stick and Button Objects
 # ----------------------------------------------------------
@@ -61,6 +67,11 @@ btnResetEncoders = None
 btnDriveSlow = None
 btnLift = None             # added to eject/retract cylinder(s)
 btnRetract = None
+
+btnRampTogIndex = None
+btnHatchGrabTogIndex = None
+btnCargoGrabTogIndex = None
+
 # ----------------------------------------------------------
 # Init
 # ----------------------------------------------------------
@@ -74,6 +85,7 @@ def init():
 
     global leftDriverStick
     global rightDriverStick
+    global goGamePad
 
     try:
         leftDriverStick = T16000M(0)
@@ -84,6 +96,11 @@ def init():
         rightDriverStick = T16000M(1)
     except:
         print('OI: Error - Could not instantiate Right Driver Stick on USB port 0!!!')
+
+    try:
+        goGamePad = Joystick(2)
+    except:
+        print('OI: Error - Could not instantiate Right Driver Stick on USB port 2!!!')
 
 
     # ----------------------------------------------------------
