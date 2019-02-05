@@ -45,9 +45,9 @@ class MyRobot(CommandBasedRobot):
 
     def disabledPeriodic(self):
         Scheduler.getInstance().run()
-        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
         # optionally do stuff like display data to smart dashboard here while in disabled
         SmartDashboard.putNumber("Back IR", subsystems.drivelift.backIR.get())
+        SmartDashboard.putNumber("Front IR", subsystems.drivelift.frontIR.get())
 
     def testPeriodic(self):
         wpilib.LiveWindow.run()
