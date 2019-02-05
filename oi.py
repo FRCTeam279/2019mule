@@ -52,7 +52,7 @@ config.btnRetractBackIndex = 6
 
 # GO Gamepad (Logitech)
 config.btnRampTogIndex = 4         # 4 = Y
-config.btnHatchGrabTogIndex = 1      # 1 = A
+config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabTogIndex = 3    # 3 = X
 
 # ----------------------------------------------------------
@@ -133,10 +133,27 @@ def init():
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
 
-    #global btnResetEncoders
-    #btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    #btnResetEncoders.whenPressed(TankDriveResetEncoders())
+    global 
+    btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
+    btnExtendFront.whenPressed(ExtendFront())
 
+    global 
+    btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
+    btnExtendBack.whenPressed(ExtendBack())
+
+    global 
+    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
+    btnRetractFront.whenPressed(RetractFront())
+
+btnRampTogIndex = None
+btnHatchGrabTogIndex = None
+btnCargoGrabTogIndex = None
+
+"""
+    global btnResetEncoders
+    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    btnResetEncoders.whenPressed(TankDriveResetEncoders())
+"""
 
 
 
