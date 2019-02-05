@@ -72,8 +72,16 @@ def init():
     can read values from them later.
     """
 
+    global gamepadController
     global leftDriverStick
     global rightDriverStick
+
+"""
+    try:
+        gamepadController = GamepadF310(2)
+    except:
+        print('OI: Error - Could not instantiate Left Driver Stick on USB port 0!!!')
+"""
 
     try:
         leftDriverStick = T16000M(0)
