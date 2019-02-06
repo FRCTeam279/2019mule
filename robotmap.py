@@ -31,7 +31,7 @@ driveLine.invertRight = False
 #driveLine.invertRightRear = False
 
 # ----------------------------------------------------------
-# Ramp Lift Subsystem Config
+# Lift Subsystem Config
 # ----------------------------------------------------------
 lift = ConfigHolder()
 lift.raiseBtnAll = 1
@@ -39,10 +39,10 @@ lift.raiseBtnAll = 1
 # ----------------------------------------------------------
 # elevator Subsystem Config
 # ----------------------------------------------------------
-elevatorSystem = ConfigHolder()
-elevatorSystem.btmLimitSwitchPort = 6 # DIO port
-elevatorSystem.elevatorMotorPort = 5 #
-
+elevator = ConfigHolder()
+elevator.btmLimitSwitchPort = 6 # DIO port
+elevator.elevatorMotorPort = 5 #???
+elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
 
 # ----------------------------------------------------------
 # General Sensors Config

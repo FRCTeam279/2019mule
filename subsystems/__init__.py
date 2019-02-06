@@ -12,7 +12,7 @@ from subsystems.elevator import Elevator
 
 driveline = None
 drivelift = None
-elevatorsystem = None
+elevator = None
 
 def init():
     print('Subsystems init called')
@@ -22,7 +22,7 @@ def init():
     '''
     global driveline
     global drivelift
-    global elevatorsystem
+    global elevator
 
     '''
     Some tests call startCompetition multiple times, so don't throw an error if
@@ -33,5 +33,5 @@ def init():
 
     driveline = TankDrive()
     drivelift = TankLift()
-    elevatorsystem = Elevator()
+    elevator = Elevator()
 

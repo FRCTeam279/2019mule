@@ -5,16 +5,16 @@ import robotmap
 import subsystems
 import oi
 
-class ElevatorControls(Command):
+class ElevatorMoveUp(Command):
 
     def __init__(self):
-            super().__init__('ElevatorControls')
-            self.requires(subsystems.elevatorsystem)
+            super().__init__('ElevatorMoveUp')
+            self.requires(subsystems.elevator)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.elevatorsystem.elevatorMove()
+        subsystems.elevator.elevatorMoveUp()
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

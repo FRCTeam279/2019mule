@@ -55,6 +55,9 @@ config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabTogIndex = 3    # 3 = X
 
+config.axisElevatorUp = 9          #???
+config.axisElevatorDown = 9       #???
+
 # ----------------------------------------------------------
 # Stick and Button Objects
 # ----------------------------------------------------------
@@ -65,12 +68,14 @@ goGamePad = None
 resetYawBtn = None
 btnResetEncoders = None
 btnDriveSlow = None
-btnLift = None             # added to eject/retract cylinder(s)
+btnLift = None
 btnRetract = None
 
 btnRampTogIndex = None
 btnHatchGrabTogIndex = None
 btnCargoGrabTogIndex = None
+axisElevatorUp = None
+axisElevatorDown = None
 
 # ----------------------------------------------------------
 # Init
@@ -133,8 +138,22 @@ def init():
     global btnRetractFront
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
-
+    
 """
+    global btnResetEncoders
+    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    btnResetEncoders.whenPressed(TankDriveResetEncoders())
+"""
+
+    # ----------------------------------------------------------
+    # Go Gamepad Controls
+    # ----------------------------------------------------------
+"""
+    global axisElevatorUp
+    global axisElevatorDown
+
+
+
     global btnRampTog
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
     btnRampTog.whenPressed(ExtendFront())
@@ -150,12 +169,6 @@ def init():
 We need to change the functions that execute when these commands are triggered
 the command files must be created for each of these functions / button operations
 
-"""
-
-"""
-    global btnResetEncoders
-    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    btnResetEncoders.whenPressed(TankDriveResetEncoders())
 """
 
 # ----------------------------------------------------------
