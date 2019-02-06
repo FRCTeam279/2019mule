@@ -1,11 +1,11 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-from commands.extendallteleopdefault import ExtendAll
-from commands.retractallteleopdefault import RetractAll
-from commands.extendfrontteleopdefault import ExtendFront
-from commands.extendbackteleopdefault import ExtendBack
-from commands.retractfrontteleopdefault import RetractFront
+from commands.extendall import ExtendAll
+from commands.retractall import RetractAll
+from commands.extendfront import ExtendFront
+from commands.extendback import ExtendBack
+from commands.retractfront import RetractFront
 import robotmap
 
 
@@ -134,30 +134,29 @@ def init():
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
 
-    global 
-    btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
-    btnExtendFront.whenPressed(ExtendFront())
+"""
+    global btnRampTog
+    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
+    btnRampTog.whenPressed(ExtendFront())
 
-    global 
-    btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
-    btnExtendBack.whenPressed(ExtendBack())
+    global btnHatchGrabTog
+    btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
+    btnHatchGrabTog.whenPressed(ExtendBack())
 
-    global 
-    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
-    btnRetractFront.whenPressed(RetractFront())
+    global btnCargoGrabTog
+    btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
+    btnCargoGrabTog.whenPressed(RetractFront())
 
-btnRampTogIndex = None
-btnHatchGrabTogIndex = None
-btnCargoGrabTogIndex = None
+We need to change the functions that execute when these commands are triggered
+the command files must be created for each of these functions / button operations
+
+"""
 
 """
     global btnResetEncoders
     btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     btnResetEncoders.whenPressed(TankDriveResetEncoders())
 """
-
-
-
 
 # ----------------------------------------------------------
 # Utility Functions

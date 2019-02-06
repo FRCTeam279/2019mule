@@ -30,8 +30,19 @@ driveLine.invertLeft = True
 driveLine.invertRight = False
 #driveLine.invertRightRear = False
 
+# ----------------------------------------------------------
+# Ramp Lift Subsystem Config
+# ----------------------------------------------------------
 lift = ConfigHolder()
 lift.raiseBtnAll = 1
+
+# ----------------------------------------------------------
+# elevator Subsystem Config
+# ----------------------------------------------------------
+elevatorSystem = ConfigHolder()
+elevatorSystem.btmLimitSwitchPort = 6 # DIO port
+elevatorSystem.elevatorMotorPort = 5 #
+
 
 # ----------------------------------------------------------
 # General Sensors Config
