@@ -55,8 +55,7 @@ config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabTogIndex = 3    # 3 = X
 
-config.axisElevatorUp = 9          #???
-config.axisElevatorDown = 9       #???
+config.axisElevatorIndex = 9 #???
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -74,8 +73,7 @@ btnRetract = None
 btnRampTogIndex = None
 btnHatchGrabTogIndex = None
 btnCargoGrabTogIndex = None
-axisElevatorUp = None
-axisElevatorDown = None
+axisElevatorIndex = None
 
 # ----------------------------------------------------------
 # Init
@@ -153,10 +151,10 @@ def init():
     # Go Gamepad Controls
     # ----------------------------------------------------------
 """
-    global axisElevatorUp
-    
-    global axisElevatorDown
-
+    global axisElevator
+    axisElevator = JoystickAxis(goGamePad, config.axisElevatorIndex)
+    axisElevator.     #??? idk how to configure joystick axis
+"""
 
     global btnRampTog
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)

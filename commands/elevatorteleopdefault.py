@@ -14,7 +14,9 @@ class ElevatorTeleopDefault(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        pass
+        speed = -(oi.goGamePad.getRawAxis(oi.config.axisElevator))
+
+        subsystems.elevator.move(speed, speed)
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
