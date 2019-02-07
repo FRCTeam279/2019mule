@@ -57,6 +57,12 @@ class Elevator(Subsystem):
 # Elevator Movement
 # ---------------------------------------------
 
+    def Move(self, speed):
+        if speed >= 0.0:
+            self.MoveUp(speed)
+        else:
+            self.MoveDown(speed)
+
 
     def elevatorMoveUp(self, speed):
     #    need to work on this
