@@ -54,12 +54,10 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed) #Add elevatorHoldSpeed to robotmap
             self.elevatorLastSpeedSet = robotmap.elevator.elevatorHoldSpeed
 
+# -----------------------------------------------------------------------------
+
     def rawMove(self, speed):
         self.elevatorSpdCtrl.set(speed)
-
-# ---------------------------------------------
-# Elevator Movement
-# ---------------------------------------------
 
     def move(self, speed):
         if speed >= 0.0:
@@ -83,15 +81,12 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(0.0)
             self.elevatorLastSpeedSet = 0.0
 
+
     def elevatorBtmLimit(self):
         if robotmap.elevator.elevatorBtmLimitNormalClosed:
             return not self.btmLimitSwitch.get()
         else:
             return self.btmLimitSwitch.get()
-
-# ---------------------------------------------
-# Encoders
-# ---------------------------------------------
 
     def resetEncoders(self):
         self.elevatorEncoder.reset()
