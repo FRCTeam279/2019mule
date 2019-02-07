@@ -2,8 +2,9 @@ import math
 import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
-from commands.elevatormoveup import ElevatorMoveUP
+from commands.elevatormoveup import ElevatorMoveUp
 from commands.elevatormovedown import ElevatorMoveDown
+from commands.elevatorteleopdefault import ElevatorTeleopDefault
 
 import subsystems
 import robotmap
@@ -35,17 +36,16 @@ class Elevator(Subsystem):
 # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
-        self.setDefaultCommand(ElevatorControls())
-        print("{}Default command set to ElevatorControls".format(self.logPrefix))
+        self.setDefaultCommand(ElevatorTeleopDefault()) #change
+        print("{}Default command set to ElevatorTeleopDefault".format(self.logPrefix))
 
     def stopElevator(self):
         self.elevatorSpdCtrl.set(0.0)
 
-
     def holdElevator(self):
         if self.btmLimitSwitch():
             self.elevatorSpdCtrl.set(0.0)
-            #self.elevatorLastSpeedSet = 0.0  this is an example from last years code
+            self.elevatorLastSpeedSet = 0.0  #this is an example from last years code
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed) #Add elevatorHoldSpeed to robotmap
             self.elevatorLastSpeedSet = robotmap.elevator.elevatorHoldSpeed
@@ -57,20 +57,23 @@ class Elevator(Subsystem):
 # Elevator Movement
 # ---------------------------------------------
 
-def elevatorMoveUp(self, speed):
 
-def elevatorMoveDown(self, speed):
-    if not self.btmLimitSwitch():
-        self.elevatorSpdCtrl.set(speed)
-        self.elevatorLastSpeedSet = speed
-        return
+    def elevatorMoveUp(self, speed):
+    #    need to work on this
+        pass
 
-    else
-        self.elevatorSpdCtrl.set(0.0)
-        self.elevatorLastSpeedSet = 0.0
+    def elevatorMoveDown(self, speed):
+        if not self.btmLimitSwitch():
+            self.elevatorSpdCtrl.set(speed)
+            self.elevatorLastSpeedSet = speed
+            return
 
-def elevatorBottomLimit(self):
-    if robotmap.elevator.elevatorBtmLimitNormalClosed:
-        return not self.btmLimitSwitch.get()
-    else:
-        return self.btmLimitSwitch.get()
+        else:
+            self.elevatorSpdCtrl.set(0.0)
+            self.elevatorLastSpeedSet = 0.0
+
+    def elevatorBottomLimit(self):
+        if robotmap.elevator.elevatorBtmLimitNormalClosed:
+            return not self.btmLimitSwitch.get()
+        else:
+            return self.btmLimitSwitch.get()

@@ -39,10 +39,18 @@ lift.raiseBtnAll = 1
 # ----------------------------------------------------------
 # elevator Subsystem Config
 # ----------------------------------------------------------
-elevator = ConfigHolder()
+elevator = ConfigHolder() #must reconfigure the motorports
 elevator.btmLimitSwitchPort = 6 # DIO port
 elevator.elevatorMotorPort = 5 #???
 elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
+elevator.elevatorHoldSpeed = 1.0
+
+#---------------------------------------------------------------------------------------------
+# ramp Subsystem Config
+#---------------------------------------------------------------------------------------------
+ramp = ConfigHolder()
+ramp.solenoidPort1= 1
+ramp.solenoidPort2= 2
 
 # ----------------------------------------------------------
 # General Sensors Config

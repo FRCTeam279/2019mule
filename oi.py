@@ -154,8 +154,8 @@ def init():
     # ----------------------------------------------------------
 """
     global axisElevatorUp
+    
     global axisElevatorDown
-
 
 
     global btnRampTog
