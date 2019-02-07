@@ -4,6 +4,7 @@ from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
 from commands.elevatormoveup import ElevatorMoveUp
 from commands.elevatormovedown import ElevatorMoveDown
+from commands.elevatorteleopdefault import ElevatorTeleopDefault
 
 import subsystems
 import robotmap
@@ -35,8 +36,8 @@ class Elevator(Subsystem):
 # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
-        self.setDefaultCommand(ElevatorTeleopDefault) #change
-        print("{}Default command set to ElevatorControls".format(self.logPrefix))
+        self.setDefaultCommand(ElevatorTeleopDefault()) #change
+        print("{}Default command set to ElevatorTeleopDefault".format(self.logPrefix))
 
     def stopElevator(self):
         self.elevatorSpdCtrl.set(0.0)
@@ -67,7 +68,7 @@ class Elevator(Subsystem):
             self.elevatorLastSpeedSet = speed
             return
 
-        else
+        else:
             self.elevatorSpdCtrl.set(0.0)
             self.elevatorLastSpeedSet = 0.0
 
