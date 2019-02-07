@@ -136,6 +136,10 @@ def init():
     global btnRetractFront
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
+
+    global btnCargoGrabTog
+    btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
+    btnCargoGrabTog.whenPressed(ExtendBack())
     
 """
     global btnResetEncoders
@@ -164,9 +168,9 @@ def init():
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
     btnCargoGrabTog.whenPressed(RetractFront())
 
+
 We need to change the functions that execute when these commands are triggered
 the command files must be created for each of these functions / button operations
-
 
 
 # ----------------------------------------------------------

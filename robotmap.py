@@ -45,12 +45,25 @@ elevator.elevatorMotorPort = 5 #???
 elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
 elevator.elevatorHoldSpeed = 1.0
 
+#---------------------------------------------------------------------------------------------
+# ramp Subsystem Config
+#---------------------------------------------------------------------------------------------
+ramp = ConfigHolder()
+ramp.solenoidPort1= 1
+ramp.solenoidPort2= 2
+
 # ----------------------------------------------------------
 # General Sensors Config
 # ----------------------------------------------------------
 sensors = ConfigHolder()
 sensors.hasAHRS = True
 
+#------------------------------------------------------------
+# Cargo Grab Config
+#------------------------------------------------------------
+cargograb = ConfigHolder()
+cargograb.servo1Port = 5 #Can be changed
+cargograb.servo2Port = 6 #Can be changed
 
 print("RobotMap module completed load")
 
