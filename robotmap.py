@@ -50,6 +50,12 @@ elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally 
 sensors = ConfigHolder()
 sensors.hasAHRS = True
 
+#------------------------------------------------------------
+# Cargo Grab Config
+#------------------------------------------------------------
+cargograb = ConfigHolder()
+cargograb.servo1Port = 5 #Can be changed
+cargograb.servo2Port = 6 #Can be changed
 
 print("RobotMap module completed load")
 
