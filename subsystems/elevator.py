@@ -60,10 +60,14 @@ class Elevator(Subsystem):
         self.elevatorSpdCtrl.set(speed)
 
     def move(self, speed):
-        if speed >= 0.0:
-            self.elevatorMoveUp(speed)
+        btmLimit = self.btmLimitSwitch.get()
+        dist = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
+        topLimit = dist >= robotmap.elevator.elevatorMaxHeight
+        if (btmLimit and speed <= 0.0) or (topLimit and speed > 0.0):
+            self.elevatorSpdCtrl.set(0)
         else:
-            self.elevatorMoveDown(speed)
+            self.elevatorSpdCtrl.set(speed)
+        self.elevatorLastSpeedSet = speed    
 
 
     def elevatorMoveUp(self, speed):
