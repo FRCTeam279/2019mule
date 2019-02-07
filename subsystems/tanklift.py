@@ -21,7 +21,9 @@ class TankLift(Subsystem):
         self.rearCylinder =  wpilib.DoubleSolenoid(1,2,3) # 1st arg= CAN ID=1, ...
         self.frontIR = wpilib.DigitalInput(robotmap.driveLine.frontIRPort)
         self.backIR = wpilib.DigitalInput(robotmap.driveLine.backIRPort)
+
     # ------------------------------------------------------------------------------------------------------------------
+    
     def initDefaultCommand(self):
         self.setDefaultCommand(TankLiftTeleopDefault())
         print("{}Default command set to TankLiftTeleopDefault".format(self.logPrefix))

@@ -55,6 +55,8 @@ config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabTogIndex = 3    # 3 = X
 
+config.axisElevatorIndex = 9 #???
+
 # ----------------------------------------------------------
 # Stick and Button Objects
 # ----------------------------------------------------------
@@ -71,6 +73,7 @@ btnRetract = None
 btnRampTogIndex = None
 btnHatchGrabTogIndex = None
 btnCargoGrabTogIndex = None
+axisElevatorIndex = None
 
 # ----------------------------------------------------------
 # Init
@@ -133,24 +136,26 @@ def init():
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
 
+    global btnCargoGrabTog
+    btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
+    btnCargoGrabTog.whenPressed(ExtendBack())
+    
 """
-    global 
-    btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
-    btnExtendFront.whenPressed(ExtendFront())
-
-    global 
-    btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
-    btnExtendBack.whenPressed(ExtendBack())
-
-    global 
-    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
-    btnRetractFront.whenPressed(RetractFront())
-
-btnRampTogIndex = None
-btnHatchGrabTogIndex = None
-btnCargoGrabTogIndex = None
+    global btnResetEncoders
+    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+    btnResetEncoders.whenPressed(TankDriveResetEncoders())
+"""
 
 """
+    global axisElevator
+    axisElevator = JoystickAxis(goGamePad, config.axisElevatorIndex)
+    axisElevator.     #??? idk how to configure joystick axis
+"""
+
+"""
+    global btnRampTog
+    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
+    btnRampTog.whenPressed(ExtendFront())
 
 """
     global btnResetEncoders
@@ -160,6 +165,12 @@ btnCargoGrabTogIndex = None
 
 
 
+<<<<<<< HEAD
+=======
+We need to change the functions that execute when these commands are triggered
+the command files must be created for each of these functions / button operations
+"""
+>>>>>>> 40d996f62acafff7195fa748364ea93bac8c7e58
 
 # ----------------------------------------------------------
 # Utility Functions
