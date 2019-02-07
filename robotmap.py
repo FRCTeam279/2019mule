@@ -52,7 +52,7 @@ elevator.elevatorEncAPort = 1
 elevator.elevatorEncBPort = 2
 elevator.elevatorEncType = wpilib.Encoder.EncodingType.k4X
 elevator.elevatorEncReverse = False
-elevator.elevatorMaxHeight = 6 #change
+elevator.elevatorMaxHeight = 48 #change once built, should be in inches since encoder measures ticks per inch
 
 elevator.inchesPerTick = 0.1        #have to calculate this w/ radius once it is actually built
 elevator.ElevatorDriveWhlRadius = 2 #radius of wheel attatched to the motor
