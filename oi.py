@@ -156,6 +156,7 @@ def init():
     axisElevator.     #??? idk how to configure joystick axis
 """
 
+"""
     global btnRampTog
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
     btnRampTog.whenPressed(ExtendFront())
@@ -171,7 +172,7 @@ def init():
 
 We need to change the functions that execute when these commands are triggered
 the command files must be created for each of these functions / button operations
-
+"""
 
 # ----------------------------------------------------------
 # Utility Functions

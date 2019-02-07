@@ -39,11 +39,25 @@ lift.raiseBtnAll = 1
 # ----------------------------------------------------------
 # elevator Subsystem Config
 # ----------------------------------------------------------
-elevator = ConfigHolder() #must reconfigure the motorports
-elevator.btmLimitSwitchPort = 6 # DIO port
-elevator.elevatorMotorPort = 5 #???
+
+#reconfigure these ports
+elevator = ConfigHolder()
+elevator.btmLimitSwitchPort = 6     # DIO port
+elevator.elevatorMotorPort = 5      #???
 elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
 elevator.elevatorHoldSpeed = 1.0
+
+#reconfigure these ports
+elevator.elevatorEncAPort = 1
+elevator.elevatorEncBPort = 2
+elevator.elevatorEncType = wpilib.Encoder.EncodingType.k4X
+elevator.elevatorEncReverse = False
+elevator.elevatorMaxHeight = 6 #change
+
+elevator.inchesPerTick = 0.1        #have to calculate this w/ radius once it is actually built
+elevator.ElevatorDriveWhlRadius = 2 #radius of wheel attatched to the motor
+#used when calculating the ticks per inch of pulley system
+#keep in mind it is a PULLEY system, this should affect the distance it travels
 
 #---------------------------------------------------------------------------------------------
 # ramp Subsystem Config

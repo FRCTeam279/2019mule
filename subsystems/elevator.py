@@ -30,6 +30,10 @@ class Elevator(Subsystem):
 
         self.btmLimitSwitch = wpilib.DigitalInput(robotmap.elevator.btmLimitSwitchPort)
         self.elevatorSpdCtrl = wpilib.Talon(robotmap.elevator.elevatorMotorPort) # may need to change this to VictorSP?
+        
+        #reconfigure these ports in robotmap later
+        self.elevatorEncoder = wpilib.Encoder(robotmap.elevator.elevatorEncAPort, robotmap.elevator.elevatorEncBPort, robotmap.elevator.elevatorEncReverse, robotmap.elevator.elevatorEncType)
+        self.elevatorEncoder.setDistancePerPulse(robotmap.elevator.inchesPerTick)
 
         self.elevatorLastSpeedSet = 0.0
 
@@ -57,19 +61,20 @@ class Elevator(Subsystem):
 # Elevator Movement
 # ---------------------------------------------
 
-    def Move(self, speed):
+    def move(self, speed):
         if speed >= 0.0:
-            self.MoveUp(speed)
+            self.elevatorMoveUp(speed)
         else:
-            self.MoveDown(speed)
+            self.elevatorMoveDown(speed)
 
 
     def elevatorMoveUp(self, speed):
-    #    need to work on this
-        pass
+        self.elevatorSpdCtrl.set(speed)
+        self.elevatorLastSpeedSet = speed
+        return
 
     def elevatorMoveDown(self, speed):
-        if not self.btmLimitSwitch():
+        if not self.elevatorBtmLimit():
             self.elevatorSpdCtrl.set(speed)
             self.elevatorLastSpeedSet = speed
             return
@@ -78,8 +83,15 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(0.0)
             self.elevatorLastSpeedSet = 0.0
 
-    def elevatorBottomLimit(self):
+    def elevatorBtmLimit(self):
         if robotmap.elevator.elevatorBtmLimitNormalClosed:
             return not self.btmLimitSwitch.get()
         else:
             return self.btmLimitSwitch.get()
+
+# ---------------------------------------------
+# Encoders
+# ---------------------------------------------
+
+    def resetEncoders(self):
+        self.elevatorEncoder.reset()
