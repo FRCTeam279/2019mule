@@ -17,3 +17,9 @@ class Ramp(subsystem):
     def initDefaultCommand(self):
         self.setDefaultCommand(RampControls())
         print("{}Default command set to RampControls".format(self.logPrefix)) 
+
+    def extendRamp():
+        pass
+
+    def retractRamp(): 
+        pass 
