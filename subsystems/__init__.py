@@ -9,10 +9,12 @@ from wpilib.robotbase import RobotBase
 from subsystems.tankdrive import TankDrive
 from subsystems.tanklift import TankLift
 from subsystems.elevator import Elevator
+from subsystems.ramp import Ramp
 
 driveline = None
 drivelift = None
 elevator = None
+ramp = None
 
 def init():
     print('Subsystems init called')
@@ -23,6 +25,7 @@ def init():
     global driveline
     global drivelift
     global elevator
+    global ramp
 
     '''
     Some tests call startCompetition multiple times, so don't throw an error if
@@ -34,4 +37,5 @@ def init():
     driveline = TankDrive()
     drivelift = TankLift()
     elevator = Elevator()
+    #ramp = Ramp()
 
