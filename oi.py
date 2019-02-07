@@ -166,6 +166,13 @@ def init():
     btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
     btnCargoGrabTog.whenPressed(RetractFront())
 
+    global RampExtend
+    btnRampExtendTog= JoystickButton(goGamePad, config.btnRampExtendTogIndex)
+    btn.RampExtend.whenPressed(RampExtend())
+
+    #global RampRetract
+    btn.RampRetract.whenPressed(RampRetract())
+    
 We need to change the functions that execute when these commands are triggered
 the command files must be created for each of these functions / button operations
 
