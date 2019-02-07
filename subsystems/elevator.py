@@ -2,7 +2,7 @@ import math
 import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
-from commands.elevatormoveup import ElevatorMoveUP
+from commands.elevatormoveup import ElevatorMoveUp
 from commands.elevatormovedown import ElevatorMoveDown
 
 import subsystems
@@ -35,17 +35,16 @@ class Elevator(Subsystem):
 # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
-        self.setDefaultCommand(ElevatorControls())
+        self.setDefaultCommand(ElevatorControls()) #change
         print("{}Default command set to ElevatorControls".format(self.logPrefix))
 
     def stopElevator(self):
         self.elevatorSpdCtrl.set(0.0)
 
-
     def holdElevator(self):
         if self.btmLimitSwitch():
             self.elevatorSpdCtrl.set(0.0)
-            #self.elevatorLastSpeedSet = 0.0  this is an example from last years code
+            self.elevatorLastSpeedSet = 0.0  #this is an example from last years code
         else:
             self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed) #Add elevatorHoldSpeed to robotmap
             self.elevatorLastSpeedSet = robotmap.elevator.elevatorHoldSpeed
@@ -57,7 +56,10 @@ class Elevator(Subsystem):
 # Elevator Movement
 # ---------------------------------------------
 
+"""
 def elevatorMoveUp(self, speed):
+#    need to work on this
+    pass
 
 def elevatorMoveDown(self, speed):
     if not self.btmLimitSwitch():
@@ -74,3 +76,6 @@ def elevatorBottomLimit(self):
         return not self.btmLimitSwitch.get()
     else:
         return self.btmLimitSwitch.get()
+
+Is this only needed for autonomous???
+"""
