@@ -1,11 +1,11 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-from commands.extendall import ExtendAll
-from commands.retractall import RetractAll
-from commands.extendfront import ExtendFront
-from commands.extendback import ExtendBack
-from commands.retractfront import RetractFront
+from commands.extendallteleopdefault import ExtendAll
+from commands.retractallteleopdefault import RetractAll
+from commands.extendfrontteleopdefault import ExtendFront
+from commands.extendbackteleopdefault import ExtendBack
+from commands.retractfrontteleopdefault import RetractFront
 import robotmap
 
 
@@ -55,9 +55,6 @@ config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabTogIndex = 3    # 3 = X
 
-config.axisElevatorUp = 9          #???
-config.axisElevatorDown = 9       #???
-
 # ----------------------------------------------------------
 # Stick and Button Objects
 # ----------------------------------------------------------
@@ -68,14 +65,12 @@ goGamePad = None
 resetYawBtn = None
 btnResetEncoders = None
 btnDriveSlow = None
-btnLift = None
+btnLift = None             # added to eject/retract cylinder(s)
 btnRetract = None
 
 btnRampTogIndex = None
 btnHatchGrabTogIndex = None
 btnCargoGrabTogIndex = None
-axisElevatorUp = None
-axisElevatorDown = None
 
 # ----------------------------------------------------------
 # Init
@@ -88,7 +83,6 @@ def init():
     can read values from them later.
     """
 
-    global gamepadController
     global leftDriverStick
     global rightDriverStick
     global goGamePad
@@ -138,38 +132,34 @@ def init():
     global btnRetractFront
     btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
     btnRetractFront.whenPressed(RetractFront())
-    
+
+"""
+    global 
+    btnExtendFront = JoystickButton(rightDriverStick, config.btnExtendFrontIndex)
+    btnExtendFront.whenPressed(ExtendFront())
+
+    global 
+    btnExtendBack = JoystickButton(rightDriverStick, config.btnExtendBackIndex)
+    btnExtendBack.whenPressed(ExtendBack())
+
+    global 
+    btnRetractFront = JoystickButton(rightDriverStick, config.btnRetractFrontIndex)
+    btnRetractFront.whenPressed(RetractFront())
+
+btnRampTogIndex = None
+btnHatchGrabTogIndex = None
+btnCargoGrabTogIndex = None
+
+"""
+
 """
     global btnResetEncoders
     btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     btnResetEncoders.whenPressed(TankDriveResetEncoders())
 """
 
-    # ----------------------------------------------------------
-    # Go Gamepad Controls
-    # ----------------------------------------------------------
-"""
-    global axisElevatorUp
-    global axisElevatorDown
 
 
-
-    global btnRampTog
-    btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
-    btnRampTog.whenPressed(ExtendFront())
-
-    global btnHatchGrabTog
-    btnHatchGrabTog = JoystickButton(goGamePad, config.btnHatchGrabTogIndex)
-    btnHatchGrabTog.whenPressed(ExtendBack())
-
-    global btnCargoGrabTog
-    btnCargoGrabTog = JoystickButton(goGamePad, config.btnCargoGrabTogIndex)
-    btnCargoGrabTog.whenPressed(RetractFront())
-
-We need to change the functions that execute when these commands are triggered
-the command files must be created for each of these functions / button operations
-
-"""
 
 # ----------------------------------------------------------
 # Utility Functions
