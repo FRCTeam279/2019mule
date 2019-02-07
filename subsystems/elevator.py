@@ -35,7 +35,7 @@ class Elevator(Subsystem):
 # ------------------------------------------------------------------------------------------------------------------
     
     def initDefaultCommand(self):
-        self.setDefaultCommand(ElevatorControls()) #change
+        self.setDefaultCommand(ElevatorTeleopDefault) #change
         print("{}Default command set to ElevatorControls".format(self.logPrefix))
 
     def stopElevator(self):
@@ -56,26 +56,23 @@ class Elevator(Subsystem):
 # Elevator Movement
 # ---------------------------------------------
 
-"""
-def elevatorMoveUp(self, speed):
-#    need to work on this
-    pass
 
-def elevatorMoveDown(self, speed):
-    if not self.btmLimitSwitch():
-        self.elevatorSpdCtrl.set(speed)
-        self.elevatorLastSpeedSet = speed
-        return
+    def elevatorMoveUp(self, speed):
+    #    need to work on this
+        pass
 
-    else
-        self.elevatorSpdCtrl.set(0.0)
-        self.elevatorLastSpeedSet = 0.0
+    def elevatorMoveDown(self, speed):
+        if not self.btmLimitSwitch():
+            self.elevatorSpdCtrl.set(speed)
+            self.elevatorLastSpeedSet = speed
+            return
 
-def elevatorBottomLimit(self):
-    if robotmap.elevator.elevatorBtmLimitNormalClosed:
-        return not self.btmLimitSwitch.get()
-    else:
-        return self.btmLimitSwitch.get()
+        else
+            self.elevatorSpdCtrl.set(0.0)
+            self.elevatorLastSpeedSet = 0.0
 
-Is this only needed for autonomous???
-"""
+    def elevatorBottomLimit(self):
+        if robotmap.elevator.elevatorBtmLimitNormalClosed:
+            return not self.btmLimitSwitch.get()
+        else:
+            return self.btmLimitSwitch.get()
