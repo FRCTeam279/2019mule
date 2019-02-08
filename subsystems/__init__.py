@@ -10,11 +10,13 @@ from subsystems.tankdrive import TankDrive
 from subsystems.tanklift import TankLift
 from subsystems.elevator import Elevator
 from subsystems.ramp import Ramp
+from subsystems.cargograb import CargoGrab
 
 driveline = None
 drivelift = None
 elevator = None
 ramp = None
+cargograb = None
 
 def init():
     print('Subsystems init called')
@@ -26,6 +28,7 @@ def init():
     global drivelift
     global elevator
     global ramp
+    global cargograb
 
     '''
     Some tests call startCompetition multiple times, so don't throw an error if
@@ -38,4 +41,5 @@ def init():
     drivelift = TankLift()
     elevator = Elevator()
     #ramp = Ramp()
+    #cargograb = CargoGrab()
 

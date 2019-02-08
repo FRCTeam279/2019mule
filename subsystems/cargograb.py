@@ -15,24 +15,23 @@ class CargoGrab(Subsystem):
         super().__init__('CargoGrab')
         self.logPrefix = "CargoGrab: "
     
-        self.leftservo = wpilib.PWM(robotmap.cargograb)
-
-        self.rightservo = wpilib.PWM(robotmap.cargograb)
+        self.leftservo = wpilib.Servo(robotmap.cargograb.leftServoPort)
+        self.rightservo = wpilib.Servo(robotmap.cargograb.rightServoPort)
 #-----------------------------------------------------------------------------------------
 
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    def initDefaultCommand(self):
-        self.setDefaultCommand(CargoGrabControls())
-        print("{}Default command set to CargoGrab".format(self.logPrefix)) 
+def initDefaultCommand(self):
+    self.setDefaultCommand(CargoGrabControls())
+    print("{}Default command set to CargoGrab".format(self.logPrefix)) 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-def openCargoHold(self):
-    self.leftservo.set(1.0)
-    self.rightservo.set(1.0)
+def openCargoHold(self,openbit):
+    self.leftservo.set(openbit)
+    self.rightservo.set(openbit)
 
-def closeCargoHold(self):
-    self.leftservo.set(-1.0)
-    self.rightservo.set(-1.0)
+def closeCargoHold(self,closebit):
+    self.leftservo.set(closebit)
+    self.rightservo.set(closebit)
         
 

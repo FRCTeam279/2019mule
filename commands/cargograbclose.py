@@ -3,6 +3,7 @@ import math
 from wpilib.command import Command
 import robotmap
 import subsystems
+
 import oi
 
 class CloseCargoHold(Command):
@@ -13,7 +14,7 @@ class CloseCargoHold(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        subsystems.cargograb.closeCargoHold()
+        subsystems.cargograb.closeCargoHold(-1)
 
     def isFinished(self):
         return True
