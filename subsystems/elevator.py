@@ -64,11 +64,16 @@ class Elevator(Subsystem):
         dist = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
         topLimit = dist >= robotmap.elevator.elevatorMaxHeight
 
-        if (btmLimit and speed <= 0.0) or (topLimit and speed > 0.0):
+        if (btmLimit and speed <= 0.0):
+            self.elevatorSpdCtrl.set(0)
+        elif (topLimit and speed > 0.0):
             self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed)
         else:
-            self.elevatorSpdCtrl.set(speed)
-            
+            if speed > 0:
+                self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed + abs(elevator.scaleSpdUp*speed))
+            else:
+                self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed - abs(elevator.scaleSpdDown*speed))
+
         self.elevatorLastSpeedSet = speed    
 
 """
