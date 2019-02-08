@@ -165,12 +165,9 @@ def init():
 
 
 
-<<<<<<< HEAD
-=======
 We need to change the functions that execute when these commands are triggered
 the command files must be created for each of these functions / button operations
 """
->>>>>>> 40d996f62acafff7195fa748364ea93bac8c7e58
 
 # ----------------------------------------------------------
 # Utility Functions
