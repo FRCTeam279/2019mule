@@ -47,6 +47,8 @@ elevator.elevatorMotorPort = 5      #???
 elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
 elevator.elevatorHoldSpeed = 0.2
 elevator.elevatorDeadZone = .05
+elevator.scaleSpdUp = 1.0
+elevator.scaleSpdDown = 1.0
 
 #reconfigure these ports
 elevator.elevatorEncAPort = 1
