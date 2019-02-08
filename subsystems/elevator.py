@@ -59,14 +59,19 @@ class Elevator(Subsystem):
     def rawMove(self, speed):
         self.elevatorSpdCtrl.set(speed)
 
-"""
-    def move(self, speed): #add filters and deadzones somewhere
-        if speed >= 0.0:
-            self.elevatorMoveUp(speed)
+    def move(self, speed):
+        btmLimit = self.btmLimitSwitch.get()
+        dist = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
+        topLimit = dist >= robotmap.elevator.elevatorMaxHeight
+
+        if (btmLimit and speed <= 0.0) or (topLimit and speed > 0.0):
+            self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed)
         else:
-            self.elevatorMoveDown(speed)
+            self.elevatorSpdCtrl.set(speed)
+            
+        self.elevatorLastSpeedSet = speed    
 
-
+"""
     def elevatorMoveUp(self, speed):
         self.elevatorSpdCtrl.set(speed)
         #self.elevatorLastSpeedSet = speed

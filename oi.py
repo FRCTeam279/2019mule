@@ -1,11 +1,11 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-from commands.extendallteleopdefault import ExtendAll
-from commands.retractallteleopdefault import RetractAll
-from commands.extendfrontteleopdefault import ExtendFront
-from commands.extendbackteleopdefault import ExtendBack
-from commands.retractfrontteleopdefault import RetractFront
+from commands.extendall import ExtendAll
+from commands.retractall import RetractAll
+from commands.extendfront import ExtendFront
+from commands.extendback import ExtendBack
+from commands.retractfront import RetractFront
 import robotmap
 
 
@@ -157,11 +157,10 @@ def init():
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
     btnRampTog.whenPressed(ExtendFront())
 
-"""
+
     global btnResetEncoders
     btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
     btnResetEncoders.whenPressed(TankDriveResetEncoders())
-"""
 
 
 
