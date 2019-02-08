@@ -29,10 +29,10 @@ class Elevator(Subsystem):
         self.logPrefix = "Elevator: "
 
         self.btmLimitSwitch = wpilib.DigitalInput(robotmap.elevator.btmLimitSwitchPort)
-        self.elevatorSpdCtrl = wpilib.VictorSP(robotmap.elevator.elevatorMotorPort) # or could be talon
+        self.elevatorSpdCtrl = wpilib.VictorSP(robotmap.elevator.motorPort) # or could be talon
         
         #reconfigure these ports in robotmap later
-        self.elevatorEncoder = wpilib.Encoder(robotmap.elevator.elevatorEncAPort, robotmap.elevator.elevatorEncBPort, robotmap.elevator.elevatorEncReverse, robotmap.elevator.elevatorEncType)
+        self.elevatorEncoder = wpilib.Encoder(robotmap.elevator.encAPort, robotmap.elevator.encBPort, robotmap.elevator.encReverse, robotmap.elevator.encType)
         self.elevatorEncoder.setDistancePerPulse(robotmap.elevator.inchesPerTick)
 
         #self.elevatorLastSpeedSet = 0.0
@@ -51,32 +51,32 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(0.0)
             #self.elevatorLastSpeedSet = 0.0  #this is an example from last years code
         else:
-            self.elevatorSpdCtrl.set(robotmap.elevator.elevatorHoldSpeed) #Add elevatorHoldSpeed to robotmap
-            #self.elevatorLastSpeedSet = robotmap.elevator.elevatorHoldSpeed
+            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed) #Add holdSpeed to robotmap
+            #self.elevatorLastSpeedSet = robotmap.elevator.holdSpeed
 
 # -----------------------------------------------------------------------------
 
     def rawMove(self, speed):
         self.elevatorSpdCtrl.set(speed)
 
-<<<<<<< HEAD
     def move(self, speed):
         btmLimit = self.btmLimitSwitch.get()
         dist = self.elevatorEncoder.get()*robotmap.elevator.inchesPerTick
-        topLimit = dist >= robotmap.elevator.elevatorMaxHeight
-        if (btmLimit and speed <= 0.0) or (topLimit and speed > 0.0):
+        topLimit = dist >= robotmap.elevator.maxHeight
+
+        if (btmLimit and speed <= 0.0):
             self.elevatorSpdCtrl.set(0)
-=======
-"""
-    def move(self, speed): #add filters and deadzones somewhere
-        if speed >= 0.0:
-            self.elevatorMoveUp(speed)
->>>>>>> 0c57a07295e4b15c4960c7d43d7ff38e9565e74c
+        elif (topLimit and speed > 0.0):
+            self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
         else:
-            self.elevatorSpdCtrl.set(speed)
+            if speed > 0:
+                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(elevator.scaleSpdUp*speed))
+            else:
+                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(elevator.scaleSpdDown*speed))
+
         self.elevatorLastSpeedSet = speed    
 
-
+"""
     def elevatorMoveUp(self, speed):
         self.elevatorSpdCtrl.set(speed)
         #self.elevatorLastSpeedSet = speed

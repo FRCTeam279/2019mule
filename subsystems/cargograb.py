@@ -9,7 +9,7 @@ import subsystems
 import robotmap
 
 class CargoGrab(Subsystem):
-   
+
     def __init__(self):
         print('CargoGrab: init called')
         super().__init__('CargoGrab')
