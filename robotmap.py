@@ -45,7 +45,8 @@ elevator = ConfigHolder()
 elevator.btmLimitSwitchPort = 6     # DIO port
 elevator.elevatorMotorPort = 5      #???
 elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
-elevator.elevatorHoldSpeed = 1.0
+elevator.elevatorHoldSpeed = 0.2
+elevator.elevatorDeadZone = .05
 
 #reconfigure these ports
 elevator.elevatorEncAPort = 1
