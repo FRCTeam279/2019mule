@@ -42,7 +42,7 @@ config.btnDriveSlow = 1
 config.btnResetEncodersIndex = 2
 
 # Right Joystick
-config.btnResetYawAngleIndex = 7 #temporarily changed from 2 to 7
+config.btnResetYawAngleIndex = 7 #changed from 2 to 7
 config.btnExtendAllIndex = 1
 config.btnRetractAllIndex = 2
 config.btnExtendFrontIndex = 3
@@ -54,8 +54,10 @@ config.btnRetractBackIndex = 6
 config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
 config.btnCargoGrabTogIndex = 3    # 3 = X
+config.axisElevatorIndex = 9       #???
 
-config.axisElevatorIndex = 9 #???
+#config.elevatorDeadZone = 1.0
+
 
 # ----------------------------------------------------------
 # Stick and Button Objects

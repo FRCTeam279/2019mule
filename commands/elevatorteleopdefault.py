@@ -15,7 +15,7 @@ class ElevatorTeleopDefault(Command):
 
     def execute(self):
         speed = -(oi.goGamePad.getRawAxis(oi.config.axisElevatorIndex))
-        speed = oi.filterInput(speed,robotmap.elevator.elevatorDeadZone)
+        speed = oi.filterInput(speed, robotmap.elevator.elevatorDeadZone)
         subsystems.elevator.move(speed)
 
     def isFinished(self):

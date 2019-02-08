@@ -43,24 +43,22 @@ lift.raiseBtnAll = 1
 #reconfigure these ports
 elevator = ConfigHolder()
 elevator.btmLimitSwitchPort = 6     # DIO port
-elevator.elevatorMotorPort = 5      #???
-elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
-elevator.elevatorHoldSpeed = 0.2
+elevator.motorPort = 5      #???
+elevator.btmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
+elevator.holdSpeed = 0.2
 elevator.elevatorDeadZone = .05
 elevator.scaleSpdUp = 1.0
 elevator.scaleSpdDown = 1.0
 
 #reconfigure these ports
-elevator.elevatorEncAPort = 1
-elevator.elevatorEncBPort = 2
-elevator.elevatorEncType = wpilib.Encoder.EncodingType.k4X
-elevator.elevatorEncReverse = False
-elevator.elevatorMaxHeight = 48 #change once built, should be in inches since encoder measures ticks per inch
+elevator.encAPort = 1
+elevator.encBPort = 2
+elevator.encType = wpilib.Encoder.EncodingType.k4X
+elevator.encReverse = False
+elevator.maxHeight = 48 #change once built, should be in inches since encoder measures ticks per inch
 
 elevator.inchesPerTick = 0.1        #have to calculate this w/ radius once it is actually built
-elevator.ElevatorDriveWhlRadius = 2 #radius of wheel attatched to the motor
-#used when calculating the ticks per inch of pulley system
-#keep in mind it is a PULLEY system, this should affect the distance it travels
+#drive wheel radius?
 
 #---------------------------------------------------------------------------------------------
 # ramp Subsystem Config
