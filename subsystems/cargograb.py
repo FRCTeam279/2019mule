@@ -4,6 +4,7 @@ import math
 import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
+from commands.cargoteleopdefault import CargoTeleopDefault
 
 import subsystems
 import robotmap
@@ -21,7 +22,7 @@ class CargoGrab(Subsystem):
 
 
 def initDefaultCommand(self):
-    self.setDefaultCommand(CargoGrabTeleopDefault())
+    self.setDefaultCommand(CargoTeleopDefault)
     print("{}Default command set to CargoGrab".format(self.logPrefix)) 
 
 
