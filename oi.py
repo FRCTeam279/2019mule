@@ -1,11 +1,11 @@
 import math
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-from commands.extendall import ExtendAll
-from commands.retractall import RetractAll
-from commands.extendfront import ExtendFront
-from commands.extendback import ExtendBack
-from commands.retractfront import RetractFront
+from commands.extendallteleopdefault import ExtendAll
+from commands.retractallteleopdefault import RetractAll
+from commands.extendfrontteleopdefault import ExtendFront
+from commands.extendbackteleopdefault import ExtendBack
+from commands.retractfrontteleopdefault import RetractFront
 import robotmap
 
 
@@ -42,7 +42,7 @@ config.btnDriveSlow = 1
 config.btnResetEncodersIndex = 2
 
 # Right Joystick
-config.btnResetYawAngleIndex = 7 #changed from 2 to 7
+config.btnResetYawAngleIndex = 7 #temporarily changed from 2 to 7
 config.btnExtendAllIndex = 1
 config.btnRetractAllIndex = 2
 config.btnExtendFrontIndex = 3
@@ -53,11 +53,10 @@ config.btnRetractBackIndex = 6
 # GO Gamepad (Logitech)
 config.btnRampTogIndex = 4         # 4 = Y
 config.btnHatchGrabTogIndex = 1    # 1 = A
-config.btnCargoGrabTogIndex = 3    # 3 = X
-config.axisElevatorIndex = 9       #???
+config.btnCargoGrabOpenTogIndex = 3    # 3 = X
+config.btnCargoGrabCloseTogIndex = 5 #????
 
-#config.elevatorDeadZone = 1.0
-
+config.axisElevatorIndex = 9 #???
 
 # ----------------------------------------------------------
 # Stick and Button Objects
@@ -159,16 +158,20 @@ def init():
     btnRampTog = JoystickButton(goGamePad, config.btnRampTogIndex)
     btnRampTog.whenPressed(ExtendFront())
 
+"""
+global btnResetEncoders
+btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
+btnResetEncoders.whenPressed(TankDriveResetEncoders())
+"""
 
-    global btnResetEncoders
-    btnResetEncoders = JoystickButton(leftDriverStick, config.btnResetEncodersIndex)
-    btnResetEncoders.whenPressed(TankDriveResetEncoders())
 
 
-
+<<<<<<< HEAD
+=======
 We need to change the functions that execute when these commands are triggered
 the command files must be created for each of these functions / button operations
 """
+>>>>>>> 40d996f62acafff7195fa748364ea93bac8c7e58
 
 # ----------------------------------------------------------
 # Utility Functions
