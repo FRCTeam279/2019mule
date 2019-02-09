@@ -14,8 +14,8 @@ class CargoTeleopDefault(Command):
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        speed = -(oi.goGamePad.getRawAxis(oi.config.axisElevatorIndex))
-        subsystems.elevator.move(speed)
+        speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
+        subsystems.cargograb.move(speed)
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands

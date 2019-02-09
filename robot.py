@@ -31,6 +31,12 @@ class MyRobot(CommandBasedRobot):
         #        if not DriverStation.getInstance().isFmsAttached():
         #            raise
 
+        print('robotInit: Starting Camera Server')
+        try:
+            wpilib.CameraServer.launch()
+            print('robotInit: Camera Rolling')
+        except Exception as e:
+            print('robotInit: Error! Exception caught starting cameraServer: {}'.format(e))
 
     def autonomousInit(self):
         super().autonomousInit()

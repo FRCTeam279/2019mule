@@ -9,7 +9,7 @@ import subsystems
 import robotmap
 
 class CargoGrab(Subsystem):
-
+   
     def __init__(self):
         print('CargoGrab: init called')
         super().__init__('CargoGrab')
@@ -20,18 +20,17 @@ class CargoGrab(Subsystem):
 #-----------------------------------------------------------------------------------------
 
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 def initDefaultCommand(self):
-    self.setDefaultCommand(CargoGrabControls())
+    self.setDefaultCommand(CargoGrabTeleopDefault())
     print("{}Default command set to CargoGrab".format(self.logPrefix)) 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 
 def openCargoHold(self,openbit):
-    self.leftservo.set(openbit)
-    self.rightservo.set(openbit)
+    self.leftservo.setAngle(openbit)
+    self.rightservo.setAngle(openbit)
 
 def closeCargoHold(self,closebit):
-    self.leftservo.set(closebit)
-    self.rightservo.set(closebit)
+    self.leftservo.setAngle(closebit)
+    self.rightservo.setAngle(closebit)
         
 
