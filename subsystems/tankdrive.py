@@ -50,7 +50,7 @@ class TankDrive(Subsystem):
         sensDiff2 = abs(l2-r2)    # 2nd left sensor - 2nd right sensor
         sensDiff3 = abs(l3-r3)    # 3rd left sensor - 3rd right sensor
         tilted = "no tilt"
-        
+
         if (sensDiff1 >= .2) and forward:
             tilted = "small"
         elif (sensDiff2 >= .2) and forward:
@@ -64,21 +64,21 @@ class TankDrive(Subsystem):
             spdLeft = left
             spdRight = right
         if tilted == "small":
-            if (l1 > r1):       # small tilt towards right
+            if (r1 > l1):       # small tilt towards right
                spdRight = max(1,right*(1+robotmap.driveLine.spdCompSmall))
                spdLeft = left
             else:
                 spdRight = right
                 spdLeft = max(1,left*(1+robotmap.driveLine.spdCompSmall))
-        if tilted == "large":  # large tilt towards right
-            if (l2 > r2):
+        if tilted == "large":   # large tilt towards right
+            if (r2 > l2):
                spdRight = max(1,right*(1+robotmap.driveLine.spdCompLarge))
                spdLeft = left
             else:
                 spdRight = right
                 spdLeft = max(1,left*(1+robotmap.driveLine.spdCompLarge))
         if tilted == "xlarge":  # very large tilt towards right
-            if (l3 > r3):
+            if (r3 > l3):
                spdRight = max(1,right*(1+robotmap.driveLine.spdCompXLarge))
                spdLeft = left
             else:
