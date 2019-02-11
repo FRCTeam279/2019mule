@@ -87,3 +87,8 @@ cargograb.leftServoPort = 6 #Can be changed
 
 print("RobotMap module completed load")
 
+#-----------------------------------------------------------
+# Hatch Grab Config
+#-----------------------------------------------------------
+hatchgrab= configHolder()
+hatchgrab.solenoid=3
