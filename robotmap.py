@@ -22,14 +22,10 @@ driveLine.rightMotorPort = 1
 driveLine.frontIRPort = 8          
 driveLine.backIRPort = 9          
 driveLine.spdCompSmall = 1.0
+driveLine.spdCompMedium = 1.0
 driveLine.spdCompLarge = 1.0
-driveLine.spdCompXLarge = 1.0
-driveLine.RtSens1Port = 1      # self-algin analog input sensor ports: 3 for right side and 3 for left side 
-driveLine.RtSens2Port = 2
-driveLine.RtSens3Port = 3
-driveLine.LftSens1Port = 4
-driveLine.LftSens2Port = 5
-driveLine.LftSens3Port = 6
+driveLine.RtSensPort = 1      # Line detect analog input right-sensor port 
+driveLine.LftSensPort = 2     # Line detect analog input left-sensor port
 
 # the new MecanumDrive library from WPILIP inverts the right motors by default, so inversion is often not needed.
 # Be sure to view the wheel direction when moving side to side and forward/backward on mounts before testing on ground to verify
