@@ -64,14 +64,14 @@ class TankDrive(Subsystem):
                 spdRight = right
                 spdLeft = max(1,left*(1+robotmap.driveLine.spdCompSmall))
         if tilted == "medium":   
-            if (r > l):       # large tilt towards right
+            if (r > l):       # medium tilt towards right
                spdRight = max(1,right*(1+robotmap.driveLine.spdCompMedium))
                spdLeft = left
             else:
                 spdRight = right
-                spdLeft = max(1,left*(1+robotmap.driveLine.spdCompLarge))
+                spdLeft = max(1,left*(1+robotmap.driveLine.spdCompMedium))
         if tilted == "large":  
-            if (r > l):       # very large tilt towards right
+            if (r > l):       # large tilt towards right
                spdRight = max(1,right*(1+robotmap.driveLine.spdCompLarge))
                spdLeft = left
             else:
