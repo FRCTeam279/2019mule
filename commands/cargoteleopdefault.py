@@ -5,22 +5,21 @@ import robotmap
 import subsystems
 import oi
 
-class ElevatorTeleopDefault(Command):
+class CargoTeleopDefault(Command):
 
     def __init__(self):
-            super().__init__('ElevatorTeleopDefault')
+            super().__init__('CargoTeleopDefault')
             self.requires(subsystems.elevator)
             self.setInterruptible(True)
             self.setRunWhenDisabled(False)
 
     def execute(self):
-        speed = -(oi.goGamePad.getRawAxis(oi.config.axisElevatorIndex))
-        speed = oi.filterInput(speed, robotmap.elevator.elevatorDeadZone)
-        subsystems.elevator.move(speed)
+        speed = -(oi.goGamePad.getRawAxis(oi.config.axisCargoGrabIndex))
+        subsystems.cargograb.move(speed)
 
     def isFinished(self):
         # default commands never "finish", they're just interrupted by other commands
         return False
 
     def interrupted(self):
-        subsystems.elevator.stopElevator()
+        subsystems.cargograb.stop()

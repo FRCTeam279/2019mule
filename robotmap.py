@@ -21,6 +21,11 @@ driveLine.leftMotorPort = 0
 driveLine.rightMotorPort = 1
 driveLine.frontIRPort = 8          
 driveLine.backIRPort = 9          
+driveLine.spdCompSmall = 1.0
+driveLine.spdCompMedium = 1.0
+driveLine.spdCompLarge = 1.0
+driveLine.RtSensPort = 1      # Line detect analog input right-sensor port 
+driveLine.LftSensPort = 2     # Line detect analog input left-sensor port
 
 # the new MecanumDrive library from WPILIP inverts the right motors by default, so inversion is often not needed.
 # Be sure to view the wheel direction when moving side to side and forward/backward on mounts before testing on ground to verify
@@ -39,11 +44,26 @@ lift.raiseBtnAll = 1
 # ----------------------------------------------------------
 # elevator Subsystem Config
 # ----------------------------------------------------------
-elevator = ConfigHolder() #must reconfigure the motorports
-elevator.btmLimitSwitchPort = 6 # DIO port
-elevator.elevatorMotorPort = 5 #???
-elevator.elevatorBtmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
-elevator.elevatorHoldSpeed = 1.0
+
+#reconfigure these ports
+elevator = ConfigHolder()
+elevator.btmLimitSwitchPort = 6     # DIO port
+elevator.motorPort = 5      #???
+elevator.btmLimitNormalClosed = False  # switch is wired to be normally cosed, so will return True when not tripped
+elevator.holdSpeed = 0.2
+elevator.elevatorDeadZone = .05
+elevator.scaleSpdUp = 1.0
+elevator.scaleSpdDown = 1.0
+
+#reconfigure these ports
+elevator.encAPort = 1
+elevator.encBPort = 2
+elevator.encType = wpilib.Encoder.EncodingType.k4X
+elevator.encReverse = False
+elevator.maxHeight = 48 #change once built, should be in inches since encoder measures ticks per inch
+
+elevator.inchesPerTick = 0.1        #have to calculate this w/ radius once it is actually built
+#drive wheel radius?
 
 #---------------------------------------------------------------------------------------------
 # ramp Subsystem Config
@@ -62,8 +82,8 @@ sensors.hasAHRS = True
 # Cargo Grab Config
 #------------------------------------------------------------
 cargograb = ConfigHolder()
-cargograb.servo1Port = 5 #Can be changed
-cargograb.servo2Port = 6 #Can be changed
+cargograb.rightServoPort = 5 #Can be changed
+cargograb.leftServoPort = 6 #Can be changed
 
 print("RobotMap module completed load")
 

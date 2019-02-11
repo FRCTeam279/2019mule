@@ -1,9 +1,10 @@
-# Two servos to raise and lower the door that keeps the ball from falling out
-# Contains the cargo
+# Two servos acting as a claw, picking up and carrying cargo
+# Connected to elevator
 import math
 import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import SmartDashboard
+from commands.cargoteleopdefault import CargoTeleopDefault
 
 import subsystems
 import robotmap
@@ -15,19 +16,22 @@ class CargoGrab(Subsystem):
         super().__init__('CargoGrab')
         self.logPrefix = "CargoGrab: "
     
-    self.servo1 = wpilib.PWM(robotmap.cargograb)
-
-    self.servo2 = wpilib.PWM(robotmap.cargograb)
+        self.leftservo = wpilib.Servo(robotmap.cargograb.leftServoPort)
+        self.rightservo = wpilib.Servo(robotmap.cargograb.rightServoPort)
 #-----------------------------------------------------------------------------------------
 
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    def initDefaultCommand(self):
-        self.setDefaultCommand(CargoGrabControls())
-        print("{}Default command set to CargoGrab".format(self.logPrefix)) 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+def initDefaultCommand(self):
+    self.setDefaultCommand(CargoTeleopDefault)
+    print("{}Default command set to CargoGrab".format(self.logPrefix)) 
 
-    def openCargoHold(self):
 
+def openCargoHold(self,openbit):
+    self.leftservo.setAngle(openbit)
+    self.rightservo.setAngle(openbit)
+
+def closeCargoHold(self,closebit):
+    self.leftservo.setAngle(closebit)
+    self.rightservo.setAngle(closebit)
         
 
