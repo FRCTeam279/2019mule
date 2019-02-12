@@ -168,12 +168,13 @@ def init():
     #btnResetEncoders.whenPressed(TankDriveResetEncoders())
 
     # These variable names are inconsistent, need to be fixed!!!!
-    #global RampExtend
-    #btnRampExtendTog= JoystickButton(goGamePad, config.btnRampExtendTogIndex)
-    #btn.RampExtend.whenPressed(RampExtend())
+    global RampExtend
+    btnRampExtendTog= JoystickButton(goGamePad, config.btnRampExtendTogIndex)
+    btn.ExtendRamp.whenPressed(RampExtend())
 
-    #global RampRetract
-    #btn.RampRetract.whenPressed(RampRetract())
+    global RampRetract
+    btnRampRetractTog= JoystickButton(goGamePad, config.btnRampRetractTogIndex)
+    btn.RetractRamp.whenPressed(RampRetract())
 
 # ----------------------------------------------------------
 # Utility Functions
