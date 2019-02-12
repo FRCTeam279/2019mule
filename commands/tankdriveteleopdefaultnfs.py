@@ -53,17 +53,17 @@ class TankDriveTeleopDefaultNFS(Command):
         leftSpeedDiff = lastLeftSpeed - self.targetLeftSpeed
         rightSpeedDiff = lastRightSpeed - self.targetRightSpeed
 
-        if math.fabs(leftSpeedDiff) > robotmap.driveLine.maxSpeedChange:
+        if math.fabs(leftSpeedDiff) > robotmap.nfs.maxSpeedChange:
             if leftSpeedDiff > 0.0:
-                leftSpeedDiff = robotmap.driveLine.maxSpeedChange
+                leftSpeedDiff = robotmap.nfs.maxSpeedChange
             if leftSpeedDiff < 0.0:
-                leftSpeedDiff = robotmap.driveLine.maxSpeedChange * -1.0
+                leftSpeedDiff = robotmap.nfs.maxSpeedChange * -1.0
 
-        if math.fabs(rightSpeedDiff) > robotmap.driveLine.maxSpeedChange:
+        if math.fabs(rightSpeedDiff) > robotmap.nfs.maxSpeedChange:
             if rightSpeedDiff > 0.0:
-                rightSpeedDiff = robotmap.driveLine.maxSpeedChange
+                rightSpeedDiff = robotmap.nfs.maxSpeedChange
             if rightSpeedDiff < 0.0:
-                rightSpeedDiff = robotmap.driveLine.maxSpeedChange * -1.0
+                rightSpeedDiff = robotmap.nfs.maxSpeedChange * -1.0
 
         adjustedLeft = lastLeftSpeed - leftSpeedDiff
         adjustedRight = lastRightSpeed - rightSpeedDiff

@@ -70,13 +70,13 @@ class Elevator(Subsystem):
             self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed)
         else:
             if speed > 0:
-                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(elevator.scaleSpdUp*speed))
+                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed + abs(robotmap.elevator.scaleSpdUp*speed))
             else:
-                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(elevator.scaleSpdDown*speed))
+                self.elevatorSpdCtrl.set(robotmap.elevator.holdSpeed - abs(robotmap.elevator.scaleSpdDown*speed))
 
         self.elevatorLastSpeedSet = speed    
 
-"""
+    """
     def elevatorMoveUp(self, speed):
         self.elevatorSpdCtrl.set(speed)
         #self.elevatorLastSpeedSet = speed
@@ -89,7 +89,7 @@ class Elevator(Subsystem):
         else:
             self.elevatorSpdCtrl.set(0.0)
             #self.elevatorLastSpeedSet = 0.0
-"""
+    """
 
     def resetEncoders(self):
         self.elevatorEncoder.reset()
